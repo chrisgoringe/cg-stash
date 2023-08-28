@@ -1,12 +1,14 @@
 # CG's custom nodes: Stash
 
+[Index of my custom nodes](https://github.com/chrisgoringe/cg-nodes-index)
+
+## Stash
+
 To install:
 ```
 cd [path to ComfyUI]/custom_nodes
 git clone https://github.com/chrisgoringe/cg-stash.git
 ```
-
-## Stash
 
 Stash is a set of four custom nodes (three required, one optional) designed to make iterative workflows (such as inpainting, img2img, or outpainting) much more convenient. It allows you to 'stash' an image when it is generated, and then choose whether to use it for the next interation, reject it and use the previous image, or start again from your initial image.
 
