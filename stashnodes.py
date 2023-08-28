@@ -1,7 +1,7 @@
 import random
 import torch
     
-class Base:
+class Base_stash:
     CATEGORY = "stash"
     FUNCTION = "func"
     REQUIRED = {}
@@ -13,7 +13,7 @@ class Base:
             i['optional'] = s.OPTIONAL
         return i
 
-class ImageStash(Base):
+class ImageStash(Base_stash):
     OUTPUT_NODE = True
     PRIORITY = 1
     REQUIRED = { 'id': ("STRING", {"default":"image"}), 'image': ("IMAGE",{}) }
@@ -41,7 +41,7 @@ class ImageStash(Base):
             return cls.previous[id]
         return cls.initial[id]
 
-class ImageUnstash(Base):
+class ImageUnstash(Base_stash):
     REQUIRED = { 'id': ("STRING", {"default":"image"}), 'initial': ("IMAGE",{}) }
     RETURN_TYPES = ("IMAGE",)
     RETURN_NAMES = ("image",)
@@ -55,7 +55,7 @@ class ImageUnstash(Base):
     def IS_CHANGED(cls, **kwargs):
         return random.random()
     
-class ImageUnstashAll(Base):
+class ImageUnstashAll(Base_stash):
     REQUIRED = { 'id': ("STRING", {"default":"image"}) }
     OPTIONAL = { 'trigger': ("*", {}) }
     RETURN_TYPES = ("IMAGE",)
@@ -68,7 +68,7 @@ class ImageUnstashAll(Base):
     def IS_CHANGED(cls, **kwargs):
         return random.random()
 
-class ImageStashController(Base):
+class ImageStashController(Base_stash):
     OUTPUT_NODE = True
     PRIORITY = 2
     REQUIRED = {  'id': ("STRING", {"default":"image"}) , 'setting' : (["New image", "Use latest output", "Reject latest output"],{}) }
